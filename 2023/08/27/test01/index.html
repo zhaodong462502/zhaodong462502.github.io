@@ -19,23 +19,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="习题链接一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析1、示例代码12345678910111213void quick_sort(int a[],int l,int r)&amp;#123;    if(l&gt;&#x3D;r) return;    int i&#x3D;l,j&#x3D;r; &#x2F;&#x2F;此处设置会导致死循环    int x &#x3D; num[(l+r)&gt;&gt;1];">
+<meta property="og:type" content="article">
+<meta property="og:title" content="test01">
+<meta property="og:url" content="http://example.com/2023/08/27/test01/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="习题链接一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析1、示例代码12345678910111213void quick_sort(int a[],int l,int r)&amp;#123;    if(l&gt;&#x3D;r) return;    int i&#x3D;l,j&#x3D;r; &#x2F;&#x2F;此处设置会导致死循环    int x &#x3D; num[(l+r)&gt;&gt;1];">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaodong462502/markdownImage/master/bloging/image-20230826164400548.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaodong462502/markdownImage/master/bloging/image-20230826161149245.png">
+<meta property="article:published_time" content="2023-08-27T11:24:21.000Z">
+<meta property="article:modified_time" content="2023-08-27T11:24:27.538Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaodong462502/markdownImage/master/bloging/image-20230826164400548.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/08/27/test01/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/27/test01/","path":"2023/08/27/test01/","title":"test01"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo</title>
+<title>test01 | Hexo</title>
   
 
 
@@ -65,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Hexo</h1>
+      <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -87,7 +94,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -100,6 +107,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">习题链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81quick-sort%E6%96%B9%E6%B3%95%E4%B8%AD%E5%A6%82%E6%9E%9C-i-l-j-r-%E4%BC%9A%E6%AD%BB%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%88%86%E6%9E%90"><span class="nav-number"></span> <span class="nav-text">一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">1、示例代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">2、代码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">3、示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%BF%83%E5%BE%97"><span class="nav-number">4.</span> <span class="nav-text">4、心得</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%97%A0%E9%99%90%E5%88%92%E5%88%86%E7%9A%84%E5%88%86%E6%9E%90"><span class="nav-number"></span> <span class="nav-text">二、无限划分的分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E9%87%8D%E8%A6%81%E7%BB%93%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">1、重要结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E9%80%BB%E8%BE%91%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">2、逻辑分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.</span> <span class="nav-text">3、示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%BF%83%E5%BE%97-1"><span class="nav-number">4.</span> <span class="nav-text">4、心得</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -129,16 +137,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/test01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -152,13 +161,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="name" content="test01 | Hexo">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/27/test01/" class="post-title-link" itemprop="url">test01</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          test01
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -181,8 +190,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="习题链接"><a href="#习题链接" class="headerlink" title="习题链接"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/problem/content/819/">习题链接</a></h3><h2 id="一、quick-sort方法中如果-i-l-j-r-会死循环的分析"><a href="#一、quick-sort方法中如果-i-l-j-r-会死循环的分析" class="headerlink" title="一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析"></a>一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析</h2><h3 id="1、示例代码"><a href="#1、示例代码" class="headerlink" title="1、示例代码"></a>1、示例代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> i=l,j=r; <span class="comment">//此处设置会导致死循环</span></span><br><span class="line">    <span class="type">int</span> x = num[(l+r)&gt;&gt;<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">while</span>(a[++i] &lt;x); <span class="comment">//死循环的地方</span></span><br><span class="line">        <span class="keyword">while</span>(a[--j] &gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(a[i],a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">quick_sort</span>(a,l,j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(a,j+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><h3 id="习题链接"><a href="#习题链接" class="headerlink" title="习题链接"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/problem/content/819/">习题链接</a></h3><h2 id="一、quick-sort方法中如果-i-l-j-r-会死循环的分析"><a href="#一、quick-sort方法中如果-i-l-j-r-会死循环的分析" class="headerlink" title="一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析"></a>一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析</h2><h3 id="1、示例代码"><a href="#1、示例代码" class="headerlink" title="1、示例代码"></a>1、示例代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> i=l,j=r; <span class="comment">//此处设置会导致死循环</span></span><br><span class="line">    <span class="type">int</span> x = num[(l+r)&gt;&gt;<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">while</span>(a[++i] &lt;x); <span class="comment">//死循环的地方</span></span><br><span class="line">        <span class="keyword">while</span>(a[--j] &gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(a[i],a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">quick_sort</span>(a,l,j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(a,j+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、代码分析"><a href="#2、代码分析" class="headerlink" title="2、代码分析"></a>2、代码分析</h3><p>因为数组a默认值都是，i的坐标越过了选中的数x ，并且x往后的数都小于0或者没有明确赋值（此种情况为0）此后a[i]的值都会小于x,导致死循环。而</p>
 <p><code>         while(a[--j] &gt;x);</code>  就不会导致因为j往左移终究会变成没有明确赋值的0，所以循环会结束。</p>
@@ -196,7 +204,6 @@
 <p><img src="https://raw.githubusercontent.com/zhaodong462502/markdownImage/master/bloging/image-20230826161149245.png" alt="image-20230826161149245"></p>
 <h3 id="4、心得-1"><a href="#4、心得-1" class="headerlink" title="4、心得"></a>4、心得</h3><p>退出循环时的条件判断，有些退出循环时的条件很明确，比如以i划分，选数为L时，退出循环时i&#x3D;L,但是j就不确定，只能是比L小的某一个位置。对于明确的位置是算法中一些重要判断的条件。</p>
 
-      
     </div>
 
     
@@ -204,93 +211,22 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/27/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/27/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-08-27 18:29:48 / Modified: 13:40:23" itemprop="dateCreated datePublished" datetime="2023-08-27T18:29:48+08:00">2023-08-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
