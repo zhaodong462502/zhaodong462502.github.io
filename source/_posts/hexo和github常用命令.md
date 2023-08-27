@@ -3,6 +3,11 @@ author: Zhao Dong
 date: 2023-08-27 20:12:19
 
 tags:
+
+- git
+- Markdown
+
+categories: git使用
 ---
 
 ## 一、git设置

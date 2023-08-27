@@ -2,7 +2,11 @@ title: acwing算法基础-chapter01-快速排序
 author: Zhao Dong
 date: 2023-08-27 20:12:19
 tags:
+	- 算法
+	- acwing
+categories:  算法基础
 ---
+
 ## 一、quick_sort方法中如果 i=l,j=r 会死循环的分析
 
 ### 1、示例代码

@@ -1,8 +1,10 @@
 title: gitee使用指南
 author: Zhao Dong
 date: 2023-08-27 20:12:19
-
 tags:
+	- git
+	- markdown
+categories:  git使用
 ---
 
 ## 一、新建仓库
