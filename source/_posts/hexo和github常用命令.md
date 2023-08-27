@@ -1,3 +1,10 @@
+title: hexo和github常用命令
+author: Zhao Dong
+date: 2023-08-27 20:12:19
+
+tags:
+---
+
 ## 一、git设置
 
 ### git ssh配置
@@ -51,5 +58,14 @@ hexo clean #清除上一次打包内容
 hexo g #重新生成html文件
 hexo d #上传github
 
+```
+
+Hexo deploy时报错超时或者443问题
+
+```	
+deploy:
+  type: git
+  repo: git@github.com:YOURNAME/YOURNAME.github.io.git  #不要写成https格式即可
+  branch: master
 ```
 
