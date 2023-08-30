@@ -4,6 +4,7 @@ date: 2023-08-27 20:12:19
 tags:
 	- 算法
 	- acwing
+
 categories:  算法基础
 ---
 
@@ -70,3 +71,32 @@ void quick_sort(int a[],int l,int r){
 ### 4、心得
 
 退出循环时的条件判断，有些退出循环时的条件很明确，比如以i划分，选数为L时，退出循环时i=L,但是j就不确定，只能是比L小的某一个位置。对于明确的位置是算法中一些重要判断的条件。
+
+
+
+## 三、第K个数中K用作长度比较的分析
+
+### 1、示例代码
+
+```c++
+int quick_sort(int q[], int l, int r, int k)
+{
+    if (l >= r) return q[l];
+
+    int i = l - 1, j = r + 1, x = q[l + r >> 1];
+    while (i < j)
+    {
+        do i ++ ; while (q[i] < x);
+        do j -- ; while (q[j] > x);
+        if (i < j) swap(q[i], q[j]);
+    }
+
+    if (j - l + 1 >= k) return quick_sort(q, l, j, k);
+    else return quick_sort(q, j + 1, r, k - (j - l + 1));
+}
+
+```
+
+2、代码分析
+
+![image-20230831001520584](https://s2.loli.net/2023/08/31/PApnCf4iLHZ2ucq.png)
