@@ -112,7 +112,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -138,6 +138,160 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/05/acwing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-chapter01-%E4%BA%8C%E5%88%86%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhao Dong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhao Dong Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhao Dong Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/05/acwing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-chapter01-%E4%BA%8C%E5%88%86%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">acwing算法基础-chapter01-二分排序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-09-05 23:30:19 / Modified: 23:30:13" itemprop="dateCreated datePublished" datetime="2023-09-05T23:30:19+08:00">2023-09-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/791/">原题链接</a></p>
+<h2 id="一-、二分排序中的mid-1和mid-1的问题"><a href="#一-、二分排序中的mid-1和mid-1的问题" class="headerlink" title="一 、二分排序中的mid+1和mid-1的问题"></a>一 、二分排序中的mid+1和mid-1的问题</h2><p>二分排序中的边界问题处理不好很容易导致死循环和计算错误的问题，以题目 数的范围为例。</p>
+<ul>
+<li>题目大意</li>
+</ul>
+<p>​	二分查找重复数第一次出现的位置和最后一次出现的位置。</p>
+<ul>
+<li>数学含义</li>
+</ul>
+<p>​	第一次位置即 找到 <strong>一个长度最大的 &gt;&#x3D;X 区间的 左边界</strong></p>
+<p>​	最后一次位置即 找到<strong>一个长度最大的 &gt;&#x3D; X 区间的右边界</strong></p>
+<blockquote>
+<p>注意 找的目标是左边界或者右边界 不是找整个区间</p>
+</blockquote>
+<ul>
+<li><p>图形示意</p>
+<p>L&#x3D;左边界 R&#x3D;有边界 M&#x3D;中间值（所选比较的数）T&#x3D;目标位置 </p>
+<p>$\textcolor {GreenYellow}{M的意义在于通过缩小区间 找到位置T }$</p>
+<p><img src="https://s2.loli.net/2023/09/05/4XVwl6cAPrdqNT8.png" alt="image-20230905221643547"></p>
+</li>
+<li><p>重要结论</p>
+<p>$\textcolor {GreenYellow}{重要的一步是将M的值传递出去时候，即 L&#x3D;M 或者R &#x3D; M，即把目标范围的左或右边界设置为M。}$</p>
+<p>$\textcolor {GreenYellow}{因为不管是M+1或者是M-1 ，指针都会移动。直接赋值M的时候，指针可能不会移动,就会造成死循环。}$</p>
+</li>
+</ul>
+<h2 id="二、具体代码分析"><a href="#二、具体代码分析" class="headerlink" title="二、具体代码分析"></a>二、具体代码分析</h2><h3 id="找第一次出现的位置"><a href="#找第一次出现的位置" class="headerlink" title="找第一次出现的位置"></a>找第一次出现的位置</h3><ul>
+<li>循环结束的条件 L&#x3D;&#x3D;R，最后一次循环时 L+1&#x3D;&#x3D;R，即搜索的目标范围内有两个元素。</li>
+<li>M 为L+R的下取整，有可能取到L，不可能取到R，但是赋值是赋给R，即R&#x3D;L,最终条件 L&#x3D;&#x3D;R 会结束循环。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a[mid] &lt; x)  l = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>    r = mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="找最后一次出现的位置"><a href="#找最后一次出现的位置" class="headerlink" title="找最后一次出现的位置"></a>找最后一次出现的位置</h3><ul>
+<li><p><strong>方法一 以【0，n-1】闭区间，最小搜索范围是2个元素，取右边界</strong></p>
+<blockquote>
+<p>$\textcolor {GreenYellow}{因为M的值是赋给L的,即L&#x3D;M}$，所以M不能取到左边界，所以要向上取整。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>所谓的闭区间 ，个人理解最后一次循环时只有两个元素，左右指针在这两个数之间移动。</p>
+<p><img src="https://s2.loli.net/2023/09/05/2Sg6iKlmVPI3wMU.png" alt="image-20230905224331820"></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a[mid] &lt;= x)  l = mid;</span><br><span class="line">    <span class="keyword">else</span>    r = mid<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>方法二 以【0，n) 左闭右开区间 ，最小搜索范围是3个元素，取中间元素</strong></p>
+<blockquote>
+<p>所谓左闭右开区间，个人理解需要加上循环上的判断控制，才能形成开区间效果，使得最后一次循环时只有三个元素，左右指针在第一、第二个数直接移动。</p>
+<p>由于$\textcolor {GreenYellow}{l +1 &lt; r}$ 保证了最小搜索范围是3个元素，所以$\textcolor {GreenYellow}{  l + r  &gt;&gt; 1}$ 时M会取到L和R中间的数，不会取L或者R，主要保证不能取到L。</p>
+<p><img src="https://s2.loli.net/2023/09/05/h7UQipf1SK2lPsT.png" alt="image-20230905225702420"></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> l = <span class="number">0</span>, r = n ;</span><br><span class="line"><span class="keyword">while</span> (l +<span class="number">1</span> &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r  &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a[mid] &lt;= x)  l = mid;</span><br><span class="line">    <span class="keyword">else</span>    r = mid; <span class="comment">// 想想此处可不可以写成 r=mid-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>第一次位置 左闭区间0开始</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a[mid] &lt; x)  l = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>    r = mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>方法三  以（-1，n）左开右开区间</strong></li>
+</ul>
+<blockquote>
+<p>左开是为了求第一次出现位置，同样保证最后一次循环是3个元素，$\textcolor {GreenYellow}{  l + r  &gt;&gt; 1}$ 时M会取到L和R中间的数，不会取L或者R，主要保证不能取到R,因为找第一次位置主要是将M赋值给R。</p>
+</blockquote>
+<blockquote>
+<p>第一次位置</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> l = <span class="number">-1</span>, r = n - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (l+<span class="number">1</span> &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a[mid] &lt; x)  l = mid ;</span><br><span class="line">    <span class="keyword">else</span>    r = mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>最后一次位置</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (l+<span class="number">1</span> &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a[mid] &lt;= x)  l = mid ;</span><br><span class="line">    <span class="keyword">else</span>    r = mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、个人心得体会"><a href="#三、个人心得体会" class="headerlink" title="三、个人心得体会"></a>三、个人心得体会</h2><p><strong>开区间 其实就是 最小搜索范围是3元素+左右新增点 的方式。这样就避免了L&#x3D;M或者R&#x3D;M 的死循环问题。</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -204,6 +358,126 @@
 <p>1、循环第一处两个区间相等如果排序的数总数为偶数，则只会在循环第一处处理结束，如果排序的数总数为奇数，则还有可能进入循环第二处、循环第三处处理。</p>
 <p>2、 i和j循环中可以如此交换赋值前提是最小区间（区间内个数为2）都是排好序的，不然无法按照此方法排序，示例如下图</p>
 <p><img src="https://raw.githubusercontent.com/zhaodong462502/markdownImage/master/bloging/image-20230831234028867.png" alt="image-20230831234028867"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/acwing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-chapter01-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhao Dong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhao Dong Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhao Dong Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/27/acwing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-chapter01-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-1/" class="post-title-link" itemprop="url">acwing算法基础-chapter01-快速排序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-27 20:12:19" itemprop="dateCreated datePublished" datetime="2023-08-27T20:12:19+08:00">2023-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-01 00:02:30" itemprop="dateModified" datetime="2023-09-01T00:02:30+08:00">2023-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">算法基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、quick-sort方法中如果-i-l-j-r-会死循环的分析"><a href="#一、quick-sort方法中如果-i-l-j-r-会死循环的分析" class="headerlink" title="一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析"></a>一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析</h2><h3 id="1、示例代码"><a href="#1、示例代码" class="headerlink" title="1、示例代码"></a>1、示例代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> i=l,j=r; <span class="comment">//此处设置会导致死循环</span></span><br><span class="line">    <span class="type">int</span> x = num[(l+r)&gt;&gt;<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">while</span>(a[++i] &lt;x); <span class="comment">//死循环的地方</span></span><br><span class="line">        <span class="keyword">while</span>(a[--j] &gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(a[i],a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">quick_sort</span>(a,l,j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(a,j+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、代码分析"><a href="#2、代码分析" class="headerlink" title="2、代码分析"></a>2、代码分析</h3><p>因为数组a默认值都是0，i的坐标越过了选中的数x ，并且x往后的数都小于0或者没有明确赋值（此种情况为0）此后a[i]的值都会小于x,导致死循环。而</p>
+<p><em><strong>while(a[–j] &gt;x);</strong></em> 就不会导致因为j往左移终究会变成没有明确赋值的0，所以循环会结束。</p>
+<h3 id="3、示例"><a href="#3、示例" class="headerlink" title="3、示例"></a>3、示例</h3><p>假如就两个数 98 97，i&#x3D;1(值97，i坐标往右移动，值变成0，始终小于选出来的数98，导致死循环)</p>
+<h3 id="4、心得"><a href="#4、心得" class="headerlink" title="4、心得"></a>4、心得</h3><p>算法当中有很多默认值的地方，<strong>比如此处的数组a的未明确下标的值都为0，为一个隐含条件</strong>，可以帮忙判断是否发生死循环。</p>
+<h2 id="二、无限划分的分析"><a href="#二、无限划分的分析" class="headerlink" title="二、无限划分的分析"></a>二、无限划分的分析</h2><h3 id="1、重要结论"><a href="#1、重要结论" class="headerlink" title="1、重要结论"></a>1、重要结论</h3><p><strong>当以i划分区间，选数不能选到左边界，则a[x] &#x3D; a[(L+R+1)&gt;&gt;1]</strong></p>
+<p><strong>当以j划分区间，选数不能选到右边界，则a[x]&#x3D;a[(L+R)&gt;&gt;1]</strong></p>
+<h3 id="2、逻辑分析"><a href="#2、逻辑分析" class="headerlink" title="2、逻辑分析"></a>2、逻辑分析</h3><p>假设选的数是a[x] ,退出循环时，**a[l] …a[i-1] 都是&lt;a[x]，a[i]&gt;a[x];a[j+1]…a[r] 都是&gt;x，a[j]&lt;a[x]**。</p>
+<p><img src="https://s2.loli.net/2023/08/26/AuKmF1NqCZg8yUe.png" alt="image-20230826164400548"></p>
+<h3 id="3、示例-1"><a href="#3、示例-1" class="headerlink" title="3、示例"></a>3、示例</h3><p>以3 1 2 5 4 这个五个数排序为例：</p>
+<p><img src="https://s2.loli.net/2023/08/26/IYhEMNt3gBsp5qw.png" alt="image-20230826161149245"></p>
+<h3 id="4、心得-1"><a href="#4、心得-1" class="headerlink" title="4、心得"></a>4、心得</h3><p>退出循环时的条件判断，有些退出循环时的条件很明确，比如以i划分，选数为L时，退出循环时i&#x3D;L,但是j就不确定，只能是比L小的某一个位置。对于明确的位置是算法中一些重要判断的条件。</p>
+<h2 id="三、第K个数中K用作个数比较的分析"><a href="#三、第K个数中K用作个数比较的分析" class="headerlink" title="三、第K个数中K用作个数比较的分析"></a>三、第K个数中K用作个数比较的分析</h2><h3 id="1、示例代码-1"><a href="#1、示例代码-1" class="headerlink" title="1、示例代码"></a>1、示例代码</h3><p><strong>以下代码是用K做个数</strong></p>
+<p>有的地方会看到K用作长度，长度这个说法个人感觉不太容易理解，用作个数更加方便理解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span> q[l];</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (j - l + <span class="number">1</span> &gt;= k) <span class="keyword">return</span> <span class="built_in">quick_sort</span>(q, l, j, k);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r, k - (j - l + <span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>以下是K当作坐标</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> a[k];</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> x = a[l], i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span> (a[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span> (a[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(a[i], a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (k &lt;= j) <span class="keyword">return</span> <span class="built_in">quick_sort</span>(l, j, k);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">quick_sort</span>(j + <span class="number">1</span>, r, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、代码分析-1"><a href="#2、代码分析-1" class="headerlink" title="2、代码分析"></a><strong>2、代码分析</strong></h3><p><strong>以下分析基于示例数据：</strong>  <strong>a[0] ~a[9] &#x3D; {10,11,12,13,14,15,16,17,18,19}</strong></p>
+<p><strong>K当作个数时：</strong></p>
+<p>有两点需要特别注意：</p>
+<p>1、快排每一次递归比较的值 是选出的X的值，即中点位置的值，而不是第K个数。</p>
+<p>2、退出循环时，以j分割区间，j最终的坐标是在&gt;&#x3D; X的位置，即如果刚好&#x3D;X，则j的位置就是X所在位置，而不是X的左侧。</p>
+<p><img src="https://s2.loli.net/2023/08/31/PApnCf4iLHZ2ucq.png" alt="image-20230831001520584"></p>
+<p>证明一下K当做个数时和K当做下标时效果一样：</p>
+<p><strong>重要的隐含条件 初始的左端的</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L1=0</span><br></pre></td></tr></table></figure>
+
+<p>以第二轮比较K1和J2-L2+1为例</p>
+<p><img src="https://s2.loli.net/2023/08/31/tmSuUpF98dnVfb6.png" alt="image-20230831092209117"></p>
 
       
     </div>
@@ -391,126 +665,6 @@
 <p>Hexo deploy时报错超时或者443问题</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:YOURNAME/YOURNAME.github.io.git  #不要写成https格式即可</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/acwing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-chapter01-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhao Dong">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhao Dong Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhao Dong Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/27/acwing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-chapter01-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-1/" class="post-title-link" itemprop="url">acwing算法基础-chapter01-快速排序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-08-27 20:12:19" itemprop="dateCreated datePublished" datetime="2023-08-27T20:12:19+08:00">2023-08-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-01 00:02:30" itemprop="dateModified" datetime="2023-09-01T00:02:30+08:00">2023-09-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">算法基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="一、quick-sort方法中如果-i-l-j-r-会死循环的分析"><a href="#一、quick-sort方法中如果-i-l-j-r-会死循环的分析" class="headerlink" title="一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析"></a>一、quick_sort方法中如果 i&#x3D;l,j&#x3D;r 会死循环的分析</h2><h3 id="1、示例代码"><a href="#1、示例代码" class="headerlink" title="1、示例代码"></a>1、示例代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> a[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> i=l,j=r; <span class="comment">//此处设置会导致死循环</span></span><br><span class="line">    <span class="type">int</span> x = num[(l+r)&gt;&gt;<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">while</span>(a[++i] &lt;x); <span class="comment">//死循环的地方</span></span><br><span class="line">        <span class="keyword">while</span>(a[--j] &gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(a[i],a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">quick_sort</span>(a,l,j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(a,j+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、代码分析"><a href="#2、代码分析" class="headerlink" title="2、代码分析"></a>2、代码分析</h3><p>因为数组a默认值都是0，i的坐标越过了选中的数x ，并且x往后的数都小于0或者没有明确赋值（此种情况为0）此后a[i]的值都会小于x,导致死循环。而</p>
-<p><em><strong>while(a[–j] &gt;x);</strong></em> 就不会导致因为j往左移终究会变成没有明确赋值的0，所以循环会结束。</p>
-<h3 id="3、示例"><a href="#3、示例" class="headerlink" title="3、示例"></a>3、示例</h3><p>假如就两个数 98 97，i&#x3D;1(值97，i坐标往右移动，值变成0，始终小于选出来的数98，导致死循环)</p>
-<h3 id="4、心得"><a href="#4、心得" class="headerlink" title="4、心得"></a>4、心得</h3><p>算法当中有很多默认值的地方，<strong>比如此处的数组a的未明确下标的值都为0，为一个隐含条件</strong>，可以帮忙判断是否发生死循环。</p>
-<h2 id="二、无限划分的分析"><a href="#二、无限划分的分析" class="headerlink" title="二、无限划分的分析"></a>二、无限划分的分析</h2><h3 id="1、重要结论"><a href="#1、重要结论" class="headerlink" title="1、重要结论"></a>1、重要结论</h3><p><strong>当以i划分区间，选数不能选到左边界，则a[x] &#x3D; a[(L+R+1)&gt;&gt;1]</strong></p>
-<p><strong>当以j划分区间，选数不能选到右边界，则a[x]&#x3D;a[(L+R)&gt;&gt;1]</strong></p>
-<h3 id="2、逻辑分析"><a href="#2、逻辑分析" class="headerlink" title="2、逻辑分析"></a>2、逻辑分析</h3><p>假设选的数是a[x] ,退出循环时，**a[l] …a[i-1] 都是&lt;a[x]，a[i]&gt;a[x];a[j+1]…a[r] 都是&gt;x，a[j]&lt;a[x]**。</p>
-<p><img src="https://s2.loli.net/2023/08/26/AuKmF1NqCZg8yUe.png" alt="image-20230826164400548"></p>
-<h3 id="3、示例-1"><a href="#3、示例-1" class="headerlink" title="3、示例"></a>3、示例</h3><p>以3 1 2 5 4 这个五个数排序为例：</p>
-<p><img src="https://s2.loli.net/2023/08/26/IYhEMNt3gBsp5qw.png" alt="image-20230826161149245"></p>
-<h3 id="4、心得-1"><a href="#4、心得-1" class="headerlink" title="4、心得"></a>4、心得</h3><p>退出循环时的条件判断，有些退出循环时的条件很明确，比如以i划分，选数为L时，退出循环时i&#x3D;L,但是j就不确定，只能是比L小的某一个位置。对于明确的位置是算法中一些重要判断的条件。</p>
-<h2 id="三、第K个数中K用作个数比较的分析"><a href="#三、第K个数中K用作个数比较的分析" class="headerlink" title="三、第K个数中K用作个数比较的分析"></a>三、第K个数中K用作个数比较的分析</h2><h3 id="1、示例代码-1"><a href="#1、示例代码-1" class="headerlink" title="1、示例代码"></a>1、示例代码</h3><p><strong>以下代码是用K做个数</strong></p>
-<p>有的地方会看到K用作长度，长度这个说法个人感觉不太容易理解，用作个数更加方便理解。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span> q[l];</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (j - l + <span class="number">1</span> &gt;= k) <span class="keyword">return</span> <span class="built_in">quick_sort</span>(q, l, j, k);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r, k - (j - l + <span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>以下是K当作坐标</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> a[k];</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> x = a[l], i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span> (a[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span> (a[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(a[i], a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (k &lt;= j) <span class="keyword">return</span> <span class="built_in">quick_sort</span>(l, j, k);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">quick_sort</span>(j + <span class="number">1</span>, r, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2、代码分析-1"><a href="#2、代码分析-1" class="headerlink" title="2、代码分析"></a><strong>2、代码分析</strong></h3><p><strong>以下分析基于示例数据：</strong>  <strong>a[0] ~a[9] &#x3D; {10,11,12,13,14,15,16,17,18,19}</strong></p>
-<p><strong>K当作个数时：</strong></p>
-<p>有两点需要特别注意：</p>
-<p>1、快排每一次递归比较的值 是选出的X的值，即中点位置的值，而不是第K个数。</p>
-<p>2、退出循环时，以j分割区间，j最终的坐标是在&gt;&#x3D; X的位置，即如果刚好&#x3D;X，则j的位置就是X所在位置，而不是X的左侧。</p>
-<p><img src="https://s2.loli.net/2023/08/31/PApnCf4iLHZ2ucq.png" alt="image-20230831001520584"></p>
-<p>证明一下K当做个数时和K当做下标时效果一样：</p>
-<p><strong>重要的隐含条件 初始的左端的</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L1=0</span><br></pre></td></tr></table></figure>
-
-<p>以第二轮比较K1和J2-L2+1为例</p>
-<p><img src="https://s2.loli.net/2023/08/31/tmSuUpF98dnVfb6.png" alt="image-20230831092209117"></p>
 
       
     </div>
