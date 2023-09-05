@@ -177,7 +177,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-09-05 23:30:19 / Modified: 23:30:13" itemprop="dateCreated datePublished" datetime="2023-09-05T23:30:19+08:00">2023-09-05</time>
+      <time title="Created: 2023-09-05 23:40:19 / Modified: 23:40:56" itemprop="dateCreated datePublished" datetime="2023-09-05T23:40:19+08:00">2023-09-05</time>
     </span>
 
   
@@ -207,12 +207,12 @@
 <ul>
 <li><p>图形示意</p>
 <p>L&#x3D;左边界 R&#x3D;有边界 M&#x3D;中间值（所选比较的数）T&#x3D;目标位置 </p>
-<p>$\textcolor {GreenYellow}{M的意义在于通过缩小区间 找到位置T }$</p>
+<p>M的意义在于通过缩小区间 找到位置T </p>
 <p><img src="https://s2.loli.net/2023/09/05/4XVwl6cAPrdqNT8.png" alt="image-20230905221643547"></p>
 </li>
 <li><p>重要结论</p>
-<p>$\textcolor {GreenYellow}{重要的一步是将M的值传递出去时候，即 L&#x3D;M 或者R &#x3D; M，即把目标范围的左或右边界设置为M。}$</p>
-<p>$\textcolor {GreenYellow}{因为不管是M+1或者是M-1 ，指针都会移动。直接赋值M的时候，指针可能不会移动,就会造成死循环。}$</p>
+<p>重要的一步是将M的值传递出去时候，即 L&#x3D;M 或者R &#x3D; M，即把目标范围的左或右边界设置为M。</p>
+<p>因为不管是M+1或者是M-1 ，指针都会移动。直接赋值M的时候，指针可能不会移动,就会造成死循环。</p>
 </li>
 </ul>
 <h2 id="二、具体代码分析"><a href="#二、具体代码分析" class="headerlink" title="二、具体代码分析"></a>二、具体代码分析</h2><h3 id="找第一次出现的位置"><a href="#找第一次出现的位置" class="headerlink" title="找第一次出现的位置"></a>找第一次出现的位置</h3><ul>
@@ -226,7 +226,7 @@
 <h3 id="找最后一次出现的位置"><a href="#找最后一次出现的位置" class="headerlink" title="找最后一次出现的位置"></a>找最后一次出现的位置</h3><ul>
 <li><p><strong>方法一 以【0，n-1】闭区间，最小搜索范围是2个元素，取右边界</strong></p>
 <blockquote>
-<p>$\textcolor {GreenYellow}{因为M的值是赋给L的,即L&#x3D;M}$，所以M不能取到左边界，所以要向上取整。</p>
+<p>因为M的值是赋给L的,即L&#x3D;M，所以M不能取到左边界，所以要向上取整。</p>
 </blockquote>
 </li>
 </ul>
@@ -240,7 +240,7 @@
 <li><p><strong>方法二 以【0，n) 左闭右开区间 ，最小搜索范围是3个元素，取中间元素</strong></p>
 <blockquote>
 <p>所谓左闭右开区间，个人理解需要加上循环上的判断控制，才能形成开区间效果，使得最后一次循环时只有三个元素，左右指针在第一、第二个数直接移动。</p>
-<p>由于$\textcolor {GreenYellow}{l +1 &lt; r}$ 保证了最小搜索范围是3个元素，所以$\textcolor {GreenYellow}{  l + r  &gt;&gt; 1}$ 时M会取到L和R中间的数，不会取L或者R，主要保证不能取到L。</p>
+<p>由于l +1 &lt; r 保证了最小搜索范围是3个元素，所以  l + r  &gt;&gt; 1 时M会取到L和R中间的数，不会取L或者R，主要保证不能取到L。</p>
 <p><img src="https://s2.loli.net/2023/09/05/h7UQipf1SK2lPsT.png" alt="image-20230905225702420"></p>
 </blockquote>
 </li>
@@ -260,7 +260,7 @@
 <li><strong>方法三  以（-1，n）左开右开区间</strong></li>
 </ul>
 <blockquote>
-<p>左开是为了求第一次出现位置，同样保证最后一次循环是3个元素，$\textcolor {GreenYellow}{  l + r  &gt;&gt; 1}$ 时M会取到L和R中间的数，不会取L或者R，主要保证不能取到R,因为找第一次位置主要是将M赋值给R。</p>
+<p>左开是为了求第一次出现位置，同样保证最后一次循环是3个元素，  l + r  &gt;&gt; 1 时M会取到L和R中间的数，不会取L或者R，主要保证不能取到R,因为找第一次位置主要是将M赋值给R。</p>
 </blockquote>
 <blockquote>
 <p>第一次位置</p>
@@ -504,91 +504,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/gitee%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhao Dong">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhao Dong Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhao Dong Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/27/gitee%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">gitee使用指南</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-08-27 20:12:19" itemprop="dateCreated datePublished" datetime="2023-08-27T20:12:19+08:00">2023-08-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-28 21:59:35" itemprop="dateModified" datetime="2023-08-28T21:59:35+08:00">2023-08-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/git%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">git使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="一、新建仓库"><a href="#一、新建仓库" class="headerlink" title="一、新建仓库"></a>一、新建仓库</h2><h3 id="官方给出的指南"><a href="#官方给出的指南" class="headerlink" title="官方给出的指南"></a><strong>官方给出的指南</strong></h3><p><img src="https://s2.loli.net/2023/08/27/tc8AsEDyVpWkmFf.png" alt="image-20230827232257008"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/hexo%E5%92%8Cgithub%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -665,6 +580,91 @@
 <p>Hexo deploy时报错超时或者443问题</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:YOURNAME/YOURNAME.github.io.git  #不要写成https格式即可</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/gitee%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhao Dong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhao Dong Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhao Dong Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/27/gitee%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">gitee使用指南</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-27 20:12:19" itemprop="dateCreated datePublished" datetime="2023-08-27T20:12:19+08:00">2023-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-08-28 21:59:35" itemprop="dateModified" datetime="2023-08-28T21:59:35+08:00">2023-08-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">git使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、新建仓库"><a href="#一、新建仓库" class="headerlink" title="一、新建仓库"></a>一、新建仓库</h2><h3 id="官方给出的指南"><a href="#官方给出的指南" class="headerlink" title="官方给出的指南"></a><strong>官方给出的指南</strong></h3><p><img src="https://s2.loli.net/2023/08/27/tc8AsEDyVpWkmFf.png" alt="image-20230827232257008"></p>
 
       
     </div>
