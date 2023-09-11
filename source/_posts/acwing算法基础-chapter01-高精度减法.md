@@ -1,5 +1,15 @@
+title: acwing算法基础-chapter01-高精度减法
+author: Zhao Dong
+date: 2023-09-11 21:11:19
+tags:
+
+- 算法
+- acwing
+
+---
 
 [原题连接](https://www.acwing.com/problem/content/794/)
+
 ## 一、算法逻辑解读
 
 ### 整体逻辑解读
