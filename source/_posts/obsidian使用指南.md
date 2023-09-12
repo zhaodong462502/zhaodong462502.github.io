@@ -13,3 +13,9 @@
 > ``（2个点）
 
 ![image-20230911101419117](https://s2.loli.net/2023/09/11/LOW4KhduUtxNwIa.png)
+
+
+
+## 二、obsidian 中查看word、excel等非md文件设置
+
+> 电脑端obsidian->设置->文件与链接->检测所有类型文件->ON就可以显示
