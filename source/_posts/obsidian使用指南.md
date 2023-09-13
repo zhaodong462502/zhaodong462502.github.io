@@ -16,6 +16,18 @@
 
 
 
-## 二、obsidian 中查看word、excel等非md文件设置
+## 二、查看word、excel等非md文件设置
 
 > 电脑端obsidian->设置->文件与链接->检测所有类型文件->ON就可以显示
+
+
+
+
+
+三、剪切图片自动复制到与该文件名称相同的目录下功能
+
+> 需要使用 Custom Attachment location 这个插件。
+
+- 插件配置
+
+![image-20230913160947536](https://s2.loli.net/2023/09/13/5Ljov2Aw7QYazBO.png)
