@@ -41,7 +41,7 @@ void merge_sort(int q[], int l, int r)
 
 **大佬做的示意图，有助于形象理解**
 
-![](https://raw.githubusercontent.com/zhaodong462502/markdownImage/master/bloging/1130_4cf170747a-3.gif)
+![](https://raw.githubusercontent.com/zhaodong462502/markdownImage/picgo/1130_4cf170747a-3.png)
 
 **个人理解**：
 
@@ -59,4 +59,4 @@ void merge_sort(int q[], int l, int r)
 
 2、 i和j循环中可以如此交换赋值前提是最小区间（区间内个数为2）都是排好序的，不然无法按照此方法排序，示例如下图
 
-![image-20230831234028867](https://raw.githubusercontent.com/zhaodong462502/markdownImage/master/bloging/image-20230831234028867.png)
+![image-20230831234028867](https://s2.loli.net/2023/09/22/YFu1wE9CKDWtmMl.png)

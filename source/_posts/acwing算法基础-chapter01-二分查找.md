@@ -1,4 +1,4 @@
-title: acwing算法基础-chapter01-二分排序
+title: acwing算法基础-chapter01-二分查找
 author: Zhao Dong
 date: 2023-09-05 23:40:19
 tags:
@@ -10,9 +10,9 @@ tags:
 
 [原题链接](https://www.acwing.com/problem/content/791/)
 
-## 一 、二分排序中的mid+1和mid-1的问题
+## 一 、二分查找中的mid+1和mid-1的问题
 
-二分排序中的边界问题处理不好很容易导致死循环和计算错误的问题，以题目 数的范围为例。
+二分查找中的边界问题处理不好很容易导致死循环和计算错误的问题，以题目 数的范围为例。
 
 - 题目大意
 
