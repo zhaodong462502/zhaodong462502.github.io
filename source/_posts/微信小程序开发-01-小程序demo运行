@@ -1,0 +1,21 @@
+## 1、Error: 系统错误，错误码：6000100,unbind download url 报错处理
+
+![image-20230923214544052](https://s2.loli.net/2023/09/23/XGU4d1NmahpDsv2.png)
+
+查了一下是数据预拉取调试的问题，可以在详情->本地设置->关闭数据预拉取调试（取消勾选）
+
+## 真机调试页面可以正常显示
+
+真机调试下的输出
+
+![image-20230924080640330](https://s2.loli.net/2023/09/24/9jVqQFmMnJIBxtY.png)
+
+![image-20230924080803409](https://s2.loli.net/2023/09/24/INvVEAdHZjrnCiJ.png)
+
+![image-20230924080831120](https://s2.loli.net/2023/09/24/2JW1v9mYzsNXuD6.png)
+
+## 本地模拟器下渲染模式skyline模式下页面显示不出来
+
+可以把渲染模式改成WebView
+
+![image-20230924084154166](https://s2.loli.net/2023/09/24/Kg5otX9lu16ziWy.png)
