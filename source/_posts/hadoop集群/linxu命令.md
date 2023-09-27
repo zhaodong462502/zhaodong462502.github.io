@@ -36,6 +36,8 @@ systemctl status firewalld
 
 ### **如何查看自己的防火墙属于** `iptables` **还是** `firewalld`
 
+> centos 默认是firewalld
+
 ```
 sudo firewall-cmd --state 
 ```
