@@ -54,3 +54,47 @@ ssh-copy-id cdh1
 ## 磁盘扩容
 
 > https://blog.csdn.net/weixin_43434273/article/details/112546054
+
+
+
+SSH私钥登录
+
+```
+linux/mac bash登陆：
+
+1)首先将密钥加入agent保存
+
+先执行：
+
+eval `ssh-agent`
+
+ssh-add 密钥文件，如ssh-add .ssh/rsa
+
+2) 查看密钥是否添加成功：
+
+ssh-add -l
+
+
+tips：
+
+密钥文件可以被其他人访问，需要设置只能自己访问
+
+chmod 600 rsa
+
+3) 修改/etc/profile
+
+在文件末尾添加
+
+eval `ssh-agent`
+
+ssh-add .ssh/rsa
+
+保存
+
+执行source /etc/profile使配置生效
+
+4) 登陆堡垒机：
+
+ssh -A test@bastion.tuniu.org  (test换成你的域账号姓名)
+```
+
