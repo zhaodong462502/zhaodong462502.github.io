@@ -1,5 +1,21 @@
 ## 环境准备
 
+### 虚拟机建议配置
+
+- 至少3台节点，server节点安装cloudera server服务和mysql服务
+
+- server节点
+
+​	内存：3GB以上
+
+​	存储：40GB
+
+- agent节点：
+
+​	内存：2GB以上
+
+​	存储：20GB
+
 ### 创建目录存放离线安装文件
 
 ```
@@ -12,6 +28,25 @@ mv CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel.sha256 CDH-6.2.0-1.cdh6.2.0.p0.9673
 
 在manifest.json 中找到CDH-6.0.1-1.cdh6.0.1.p0.590678-el7.parcel ，然后找到上面的hash值
 替换掉CDH-6.0.1-1.cdh6.0.1.p0.590678-el7.parcel.sha 中的内容
+
+yum本地源配置
+不配置会遇到找不到baseurl情况
+Cannot find a valid baseurl for repo: cloudera-manager
+
+1、创建cloudera-manager.repo文件
+cd /etc/yum.repos.d/
+
+[cloudera-manager]
+name=Cloudera Manager 6.2.0
+baseurl=http://cdh1:8900/cloudera-repos/
+gpgcheck=0
+repo_gpgcheck=0
+enabled=1
+
+2.创建repodata文件夹
+cd /var/www/html/
+createrepo cloudera-repos/
+
 
 ```
 
@@ -142,7 +177,7 @@ yum install bind-utils psmisc cyrus-sasl-plain cyrus-sasl-gssapi portmap httpd m
  
 ```
 
-## master节点安装顺序
+### master节点安装顺序
 
 > daemons先安装
 
@@ -160,6 +195,11 @@ rpm -ivh cloudera-manager-server-db-2-6.2.0-968826.el7.x86_64.rpm
 ```
 rpm -ivh cloudera-manager-daemons-6.2.0-968826.el7.x86_64.rpm
 rpm -ivh cloudera-manager-agent-6.2.0-968826.el7.x86_64.rpm
+
+
+## 从节点修改agent的配置，指向server的节点
+vi /etc/cloudera-scm-agent/config.ini
+server_host=localhost102
 ```
 
 ### 启用Auto-TLS以自动创建证书（***千万别安装***）
@@ -223,19 +263,30 @@ GRANT ALL ON scm.* TO 'scm'@'%' IDENTIFIED BY 'scm';
 GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY 'amon';
 GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY 'rman';
 GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY 'hue';
-GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY 'metastore';
+GRANT ALL ON metastore.* TO 'hive'@'%' IDENTIFIED BY 'hive';
 GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY 'sentry';
 GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY 'nav';
 GRANT ALL ON navms.* TO 'navms'@'%' IDENTIFIED BY 'navms';
 GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY 'oozie';
 ```
 
-####  设置Cloudera Manager数据库
+###  设置Cloudera Manager数据库
 
 ```
 mysql在本地时执行：
 rm -rf /etc/cloudera-scm-server/db.mgmt.properties
 /opt/cloudera/cm/schema/scm_prepare_database.sh mysql scm scm
+
+mysql在本地还可以通过配置文件设置
+主节点修改server的配置，确定以下项与之前创建库时一致
+vi /etc/cloudera-scm-server/db.properties
+com.cloudera.cmf.db.type=mysql
+com.cloudera.cmf.db.host=localhost102
+com.cloudera.cmf.db.name=cmf
+com.cloudera.cmf.db.user=cmf
+com.cloudera.cmf.db.password=999999
+com.cloudera.cmf.db.setupType=EXTERNAL
+
 
 如果不在一台机器上，执行类似如下命令（cdh2为mysql所在位置，cdh1为cloudera manager server所在位置）：
  [root@cdh1 cloudera-scm-server]# /opt/cloudera/cm/schema/scm_prepare_database.sh mysql -h 192.168.106.151 --scm-host cdh1 scm scm
@@ -257,11 +308,14 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ### 启动Cloudera Manager Server
 
 ```
+ server重启
  systemctl start cloudera-scm-server
  
  查看server启动日志
  tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
  
+  agent重启
+  systemctl restart cloudera-scm-agent.service
  查看agent日志
  tail -f /var/log/cloudera-scm-agent/cloudera-scm-agent.log
  
@@ -271,7 +325,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
 ### python临时起一个http本地仓库
 
-将repo文件放到 /var/www/html/cloudera-repos目录下
+> 将repo文件放到 /var/www/html/cloudera-repos目录下
 
 ```
 在 /var/www/html/目录下执行命令

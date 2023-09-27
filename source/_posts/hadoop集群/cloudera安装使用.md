@@ -72,3 +72,4 @@ cm访问地址
 http://192.168.254.129:7180/cmf/login
 ```
 
+![image-20230927170934208](https://s2.loli.net/2023/09/27/jM4h71GY5eHlron.png)
