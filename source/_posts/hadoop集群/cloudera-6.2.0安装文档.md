@@ -298,9 +298,25 @@ com.cloudera.cmf.db.setupType=EXTERNAL
 
 ### 禁用透明大页面压缩(cdh1,cdh2,cdh3上都执行)
 
+> 安装集群时会检查提醒
+
 ```javascript
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+并将上面的两条命令写入开机自启动
+vim /etc/rc.local 
+```
+
+### **优化交换分区**
+
+> 安装集群时会检查提醒
+
+```
+vim /etc/sysctl.conf
+vm.swappiness = 10
+
+sysctl -p /etc/sysctl.conf 
 ```
 
 
