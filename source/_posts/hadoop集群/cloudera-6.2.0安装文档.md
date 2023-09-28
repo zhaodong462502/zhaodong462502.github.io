@@ -1,5 +1,13 @@
 ## 环境准备
 
+### 环境准备
+
+#### 安装包地址
+
+链接：https://pan.baidu.com/s/1QrLsXynmopqoZhDkoIAihg
+
+提取码：kaoi
+
 ### 虚拟机建议配置
 
 - 至少3台节点，server节点安装cloudera server服务和mysql服务
