@@ -100,3 +100,11 @@ ssh-add .ssh/rsa
 ssh -A test@bastion.tuniu.org  (test换成你的域账号姓名)
 ```
 
+
+
+查看linux版本
+
+```
+lsb_release -a
+```
+
