@@ -1,5 +1,11 @@
 ## 环境准备
 
+### 安装包地址
+
+链接：https://pan.baidu.com/s/1QrLsXynmopqoZhDkoIAihg 
+
+提取码：kaoi 
+
 ### 虚拟机建议配置
 
 - 至少3台节点，server节点安装cloudera server服务和mysql服务
@@ -21,13 +27,13 @@
 ```
  mkdir -p /opt/cloudera/parcel-repo/
  
-最后将CDH-6.0.1-1.cdh6.0.1.p0.590678-el7.parcel.sha256，重命名为CDH-6.0.1-1.cdh6.0.1.p0.590678-el7.parcel.sha，这点必须注意，否则系统会重新下载CDH-6.0.1-1.cdh6.0.1.p0.590678-el7.parcel
+最后将CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel.sha256，重命名为CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel.sha，这点必须注意，否则系统会重新下载CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel
 
 mv CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel.sha256 CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel.sha
 
 
-在manifest.json 中找到CDH-6.0.1-1.cdh6.0.1.p0.590678-el7.parcel ，然后找到上面的hash值
-替换掉CDH-6.0.1-1.cdh6.0.1.p0.590678-el7.parcel.sha 中的内容
+在manifest.json 中找到CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel ，然后找到上面的hash值
+替换掉CDH-6.2.0-1.cdh6.2.0.p0.967373-el7.parcel.sha 中的内容
 
 yum本地源配置
 不配置会遇到找不到baseurl情况
