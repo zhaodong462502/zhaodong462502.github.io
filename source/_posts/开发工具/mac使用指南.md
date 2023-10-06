@@ -14,3 +14,17 @@
 >
 > 重新启动mac即可
 
+## mac自带截图
+
+![image-20231006113545687](../../../../../Library/Application Support/typora-user-images/image-20231006113545687.png)
+
+### 截整个屏幕
+
+> 请同时按住以下三个按键：Shift、Command 和 3
+
+### 自定义选区截图
+
+> 同时按住以下三个按键：Shift、Command 和 4
+>
+> 特别注意：***要将截屏拷贝到剪贴板，请在截屏时按住 Control 键***。然后，你可以将截屏粘贴到其他位置
+
