@@ -76,3 +76,38 @@
 
 
 
+## LeetCode插件
+
+### 模板配置
+
+#### CodeFileName 类名
+
+```java
+$!velocityTool.replace(${question.title}," ","")
+
+```
+
+#### CodeTemplate 类内容配置
+
+```java
+package leetcode.editor.cn;
+
+${question.content}
+public class $!velocityTool.replace(${question.title}," ",""){
+	public static void main(String[] args) {
+		Solution solution = new $!velocityTool.replace(${question.title}," ","")().new Solution();
+		
+	}
+${question.code}
+}
+
+```
+
+#### 特别注意
+
+> 在生成的自定义代码中包含两行关键信息:
+> //leetcode submit region begin(Prohibit modification and deletion):提交到leetcode进行验证的代码开始标记
+> //leetcode submit region end(Prohibit modification and deletion):提交到leetcode进行验证的代码结束标记
+> 这两行标记标示了提交到leetcode服务器进行验证的代码范围,在此范围内只允许有出现与题目解答相关的内容，出现其他内容可能导致leetcode验证不通过。
+> 除了此范围内，其他区域是可以任意填写的，内容不会提交到leetcode，可以增加一些可以本地调试的内容，例如:import java.util.Arrays;
+> 所以，这两行内容是不能被删除和修改的，否则将识别不到提交的内容。
