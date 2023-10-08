@@ -1,17 +1,17 @@
-vi复制一行
+## vi复制一行
 
 ```
 yy复制一行
 p粘贴
 ```
 
-显示行数
+## 显示行数
 
 ```
 输入“：set number”或者“：set nu”后按回车键
 ```
 
-递归创建目录
+## 递归创建目录
 
 ```
 mkdir -p 目录名
@@ -102,9 +102,19 @@ ssh -A test@bastion.tuniu.org  (test换成你的域账号姓名)
 
 
 
-查看linux版本
+## 查看linux版本
 
 ```
 lsb_release -a
+```
+
+## VIM中撤销操作
+
+```
+在vim中按u可以撤销一次操作
+
+u撤销上一步的操作
+
+Ctrl+r恢复上一步被撤销的操作
 ```
 
