@@ -38,6 +38,10 @@
 
 > 要在ultimate版本安装
 
+#### Mybatis 插件 mybatisx
+
+> mybatis文件生成工具
+
 #### 搜索url对应的实体类插件 RestfulToolkit**
 
 #### 花括号颜色匹配插件 Rainbow Brackets
@@ -68,7 +72,7 @@
 
 > JSON转成JAVA bean
 
-代码注释插件 Easy Javadoc
+#### 代码注释插件 Easy Javadoc
 
 
 
