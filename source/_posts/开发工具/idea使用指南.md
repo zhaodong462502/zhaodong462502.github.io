@@ -18,13 +18,15 @@
 
 #### 翻译插件 Translation
 
-#### 背景图片插件 **BackgroundImagePlus**
+#### 背景图片插件 BackgroundImagePlus
 
 #### 代码特效插件 **Activate-power-mode**
 
 
 
 ### 代码插件
+
+#### 右侧代码缩略图插件 CodeGlance
 
 #### 自动生成set方法插件 GenerateAllSetter
 
@@ -42,7 +44,7 @@
 
 > mybatis文件生成工具
 
-#### 搜索url对应的实体类插件 RestfulToolkit**
+#### 搜索url对应的实体类插件 RestfulToolkit
 
 #### 花括号颜色匹配插件 Rainbow Brackets
 
