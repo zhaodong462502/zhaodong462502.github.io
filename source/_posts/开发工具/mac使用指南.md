@@ -39,3 +39,8 @@ Command+Shift+.
 
 ```
 
+
+
+## mac截图工具
+
+Xnip 和 ishot 可以滚动截屏
