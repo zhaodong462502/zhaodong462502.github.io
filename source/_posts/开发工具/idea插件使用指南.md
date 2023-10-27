@@ -36,7 +36,7 @@
 
 > 可以直接复制搜索百度谷歌
 
-#### Mybatis xml和代码切换插件 **Free-idea-mybatis**
+#### Mybatis xml和代码切换插件 Free-idea-mybatis
 
 > 要在ultimate版本安装
 
