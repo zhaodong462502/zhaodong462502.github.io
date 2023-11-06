@@ -26,6 +26,8 @@
 
 ### 代码插件
 
+#### 快捷键提示插件 Key Promoter X 
+
 #### 右侧代码缩略图插件 CodeGlance
 
 #### 自动生成set方法插件 GenerateAllSetter
