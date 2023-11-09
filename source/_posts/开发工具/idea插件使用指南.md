@@ -26,6 +26,8 @@
 
 ### 代码插件
 
+#### 快捷键提示插件 Key Promoter X 
+
 #### 右侧代码缩略图插件 CodeGlance
 
 #### 自动生成set方法插件 GenerateAllSetter
@@ -36,7 +38,7 @@
 
 > 可以直接复制搜索百度谷歌
 
-#### Mybatis xml和代码切换插件 **Free-idea-mybatis**
+#### Mybatis xml和代码切换插件 Free-idea-mybatis
 
 > 要在ultimate版本安装
 
