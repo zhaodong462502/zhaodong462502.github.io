@@ -19,3 +19,16 @@ RPTME-IMDHD-MIEPX-VLXAW
 用户可根据软件的版本选择适合的注册码，如果不清楚软件版本可以依次尝试以上4条注册码。
 ```
 
+
+
+## 官方键盘映射工具
+
+powertoys
+
+## 允许用户使用快捷键在同一程序的不同窗口之间快速切换
+
+AltBacktick 
+
+## 窗口切换工具
+
+FastWindowSwitcher
