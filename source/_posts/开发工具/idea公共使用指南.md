@@ -11,3 +11,12 @@ Ctrl+Alt+O
 > Library/Application Support/JetBrains/IntelliJIdea2023.3
 >
 > 删除此目录 重新安装idea即可
+
+## IDEA和gradle低版本的对应关系
+
+项目中gradle版本较低，例如2.14。如果用最新的idea导入项目，会有不兼容的问题。使用兼容低版本的gradle的IDEA可以解决此问题
+
+| 序号 | IDEA版本           | gradle版本 |
+| ---- | ------------------ | ---------- |
+| 1    | IDEA 2019.2.4 JBR8 | 2.14       |
+
