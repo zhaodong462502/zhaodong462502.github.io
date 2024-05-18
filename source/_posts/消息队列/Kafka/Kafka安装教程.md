@@ -1,7 +1,3 @@
-转载请注明原创地址为：[http://www.54tianzhisheng.cn/2018/01/04/Kafka/](https://link.segmentfault.com/?enc=1RbwQMF1CNZBEgH8EhJ2tA%3D%3D.b%2FELuTVN220mHKClKzmrsmcIHiORoY0fcOoKH7F3I6y22dO8Cyqd%2FrYFNdkL1bkS)
-
-![mark](./images-Kafka安装教程/1460000012730954.jpeg "mark")
-
 ### 介绍
 
 官网：[http://kafka.apache.org/](https://link.segmentfault.com/?enc=gHv9H%2BiQXVFf7S2JSjDdoQ%3D%3D.EiZOaKroOu2zytWkTdlsScyYLgedUcoDjoEeFtk%2Fijc%3D)
@@ -192,9 +188,9 @@ log.dir=/data/kafka/logs-3
 启动Kafka服务：
 
 ```
-bin/kafka-server-start.sh config/server-2.properties &amp;
+bin/kafka-server-start.sh config/server-2.properties &;
 
-bin/kafka-server-start.sh config/server-3.properties &amp;
+bin/kafka-server-start.sh config/server-3.properties &;
 ```
 
 至此，单机多broker实例的集群配置完毕。
