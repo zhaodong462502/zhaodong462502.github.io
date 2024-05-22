@@ -21,6 +21,7 @@ git config --global user.name "你的git用户名"
 git config --global user.email "你的git登录邮箱"
 #生成ssh公钥
 ssh-keygen -t rsa -C "你的git登录邮箱"
+
 ```
 
 **github官网操作：**

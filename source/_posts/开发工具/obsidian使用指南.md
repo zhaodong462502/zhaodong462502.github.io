@@ -49,3 +49,7 @@
 ## obsidian 如何打开如何设置在新tab页打开文件
 
 > 使用open in new tab插件
+
+## Obsidian 插件 Editor Width Slider 
+
+帮你快速自定义笔记的栏宽
