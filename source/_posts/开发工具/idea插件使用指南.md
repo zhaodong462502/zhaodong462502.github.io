@@ -26,6 +26,8 @@
 
 ### 代码插件
 
+#### 直接查看jar包插件 File Expander
+
 #### 快捷键提示插件 Key Promoter X 
 
 #### 右侧代码缩略图插件 CodeGlance
