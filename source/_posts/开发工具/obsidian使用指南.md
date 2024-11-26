@@ -53,3 +53,18 @@
 ## Obsidian 插件 Editor Width Slider 
 
 帮你快速自定义笔记的栏宽
+
+
+
+## Automatically Reveal Active File 
+
+自动定位展开当前文件的侧边栏位置
+
+
+
+## 多Tab展示插件
+
+[multi-tabs-release.css](./multi-tabs-release.css)
+
+
+

@@ -1,0 +1,151 @@
+/*  copy from 熊猫别熬夜 主题 利用AI进行调整样式
+ * @ orign Author: 熊猫别熬夜 
+ * @ orign Date: 2024-09-16 10:10:20 
+ * @Last Modified by: zhaodong4625
+ * @Last Modified time: 2024-11-26 13:30:51
+ */
+/* 2024-04-04_21:48：参考：https://gist.github.com/digitalsignalperson/56fe3cbcf41707cb97362234cb07ccb0 */
+
+/* 启动BFC */
+.workspace .mod-root .workspace-tab-header-container.workspace-tab-header-container.workspace-tab-header-container {
+  position: relative;
+  height: fit-content;
+  padding-right: 80px;
+}
+
+.workspace .mod-root .workspace-tab-header-container-inner {
+  display: flex;
+  justify-content: flex-start;
+  align-content: space-around;
+  flex-wrap: wrap;
+  min-width: 100%;
+}
+
+/* !排布间距设置 */
+.workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  min-width: fit-content;
+  max-width: 240px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  flex: 0 0 auto;
+  transition: all 0.2s ease;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 3px;
+  padding-right: 28px;
+  position: relative;
+  background-color: var(--background-secondary);
+}
+
+/* 文件名只在过长时截断 */
+.workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+/* ======tab样式设置 来自BT主题的safari-tab-style======== */
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header::before,
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header::after,
+.workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner::after {
+  display: none;
+}
+
+.workspace .mod-root .workspace-tab-header-inner::after {
+  display: none;
+}
+
+.mod-vertical:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-container-inner,
+.mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-container-inner {
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+
+.mod-vertical:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header,
+.mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  border-radius: 6px;
+  box-shadow: none;
+  height: calc(var(--header-height) * 0.7);
+  padding: none;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  transition: 400ms;
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header:first-child {
+  margin-left: 0;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active:hover {
+  background-color: var(--background-modifier-border);
+}
+
+.theme-light .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  border: 1px solid var(--tab-outline-color);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  border: 1px solid rgba(var(--mono-rgb-0), .25);
+}
+
+/* 激活状态的标签样式 */
+.workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  background-color: var(--background-primary);
+  border-bottom: 2px solid var(--interactive-accent);
+}
+
+/* 悬停状态的标签样式 */
+.workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:hover {
+  background-color: var(--background-primary);
+}
+
+/* ==========其他按钮设置========== */
+/* !新标签页按钮固定设置 */
+.titlebar .workspace-tab-header-new-tab,
+.mod-root .workspace-tab-header-new-tab,
+/* !下拉菜单调整 */
+.mod-root .workspace-tab-header-tab-list {
+  display: inline-block;
+}
+
+/* 关闭按钮默认隐藏，hover时显示 */
+.workspace.workspace.workspace .mod-root .workspace-tab-header:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  border-radius: 4px;
+}
+
+/* 添加这条规则来显示关闭按钮 */
+.workspace.workspace.workspace .mod-root .workspace-tab-header:not(.mod-stacked):hover .workspace-tab-header-inner-close-button {
+  display: flex;
+}
+
+.workspace.workspace.workspace .mod-root .workspace-tab-header:not(.mod-stacked) .workspace-tab-header-inner-close-button:hover {
+  opacity: 1;
+  background-color: var(--background-modifier-hover);
+}
+
+/* 置顶标签页永远在最前面 */
+.workspace.workspace.workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:has(.mod-pinned) {
+  order: -1;
+}
+
+.workspace-tab-header-container>.sidebar-toggle-button.mod-right {
+  top: 0px;
+  position: absolute;
+  right: 20px;
+  z-index: 1;
+}
+
+/* 不显示顶部按钮 */
+.titlebar-button-container.mod-right {
+  display: none;
+}

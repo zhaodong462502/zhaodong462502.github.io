@@ -50,3 +50,10 @@ Xnip 和 ishot 可以滚动截屏
 ## mac异常大文件
 
 ![image-20231109130943754](https://s2.loli.net/2023/11/09/Lo81sQhVT2DyfX9.png)
+
+## 按路径保存文件
+
+```
+同时按下快捷键shift+command+g
+```
+
