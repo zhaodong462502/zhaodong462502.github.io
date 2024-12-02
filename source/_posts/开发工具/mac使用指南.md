@@ -57,3 +57,42 @@ Xnip 和 ishot 可以滚动截屏
 同时按下快捷键shift+command+g
 ```
 
+
+
+## brew 卸载安装
+
+```cmd
+# 如果卸载时提示brew目录不存在，可以指定安装路径加上参数 -- --path=/usr/local/Homebrew
+
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+```
+
+> 参考 https://blog.csdn.net/mifangdebaise/article/details/131494639
+
+APPLE芯片的brew默认路径：/opt/homebrew/bin
+
+INTEL芯片的brew默认路径：/usr/local/Homebrew/bin
+
+
+
+## brew 命令 shellenv命令
+
+>  作用：设置PATH环境变量
+
+### 多次执行shellenv不会有多次输出
+
+#### 原因
+
+> 如果你在第一次运行 /opt/homebrew/bin/brew shellenv 时有输出，而之后再次执行没有输出，这表明该命令的环境变量已经在当前终端会话中生效。实际上，brew shellenv 输出的内容会被执行一次并设置相应的环境变量，之后再次运行该命令不会再重复输出 
+
+#### 验证方法
+
+> 验证方法可以先去掉PATH中brew的相关路径 然后再执行shellenv
+>
+> ```cmd
+> # 去除PATH中brew的路径
+> export PATH=$(echo $PATH | sed -e 's|/opt/homebrew/bin:||' -e 's|:/opt/homebrew/bin||' -e 's|/opt/homebrew/bin||')
+> ```
+
+
+
