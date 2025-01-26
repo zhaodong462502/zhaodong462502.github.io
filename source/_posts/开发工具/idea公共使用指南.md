@@ -27,3 +27,12 @@ Ctrl+Alt+O
 > gradle的项目使用的仓库地址大多是外网，浏览器可以正常访问，但是IDEA里访问不了。配置IDEA使用本机的代理。clash软件的端口是7899。HOST使用127.0.0.1即可。
 
 ![image-20240519204952745](./images-idea公共使用指南/image-20240519204952745.png)
+
+## 设置菜单导航公共部分字体
+
+Appearance --> Use custom font
+
+![image-20250127025155278](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250127025155278.png)
+
+
+
