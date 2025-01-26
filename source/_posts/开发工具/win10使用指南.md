@@ -24,3 +24,22 @@ RPTME-IMDHD-MIEPX-VLXAW
 ## Win10任务栏图标变大
 
 使用小任务栏按钮 勾去即可
+
+## win11修改账户名称
+
+### 现象
+
+有的win11可以在控制面板-用户账户-用户账户-更改账户名称里修改，但是有的里面没有【修改账户名称】选项
+
+### 原因
+
+登录的是微软账户则没有，登录的是本地账户则有。
+
+### 解决方案
+
+从微软账户改为本地账户：[从本地帐户更改为Microsoft帐户 - Microsoft 支持](https://support.microsoft.com/zh-cn/windows/从本地帐户更改为microsoft帐户-395203bf-9f1b-eb24-b042-5b8dae6c1d20)
+
+Netplwiz 打开窗口可以修改
+
+
+
