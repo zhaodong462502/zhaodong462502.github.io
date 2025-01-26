@@ -36,4 +36,4 @@ curl -I https://github.com
 
 ## VSCode设置github拉取协议
 
-![image-20250127030619592](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250127030619592.png)
+![image-20250127030619592](./images-github和gitee使用指南/image-20250127030619592.png)

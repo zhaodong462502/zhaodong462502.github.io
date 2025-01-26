@@ -32,7 +32,7 @@ Ctrl+Alt+O
 
 Appearance --> Use custom font
 
-![image-20250127025155278](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250127025155278.png)
+![image-20250127025155278](./images-idea公共使用指南/image-20250127025155278.png)
 
 
 
