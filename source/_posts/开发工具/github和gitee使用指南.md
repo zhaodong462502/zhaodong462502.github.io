@@ -33,3 +33,7 @@ curl -I https://github.com
 #### 检查 GitHub 状态
 
 > 偶尔 GitHub 服务本身可能会出现问题，可以访问 GitHub 的状态页面来确认是否存在故障：[GitHub Status](https://www.githubstatus.com/)
+
+## VSCode设置github拉取协议
+
+![image-20250127030619592](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250127030619592.png)
