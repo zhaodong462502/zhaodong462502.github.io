@@ -100,3 +100,128 @@ Done
 ```
 
 ![image-20250208194118676](https://s2.loli.net/2025/02/08/wZ2BeOlkSWac3Iu.png)
+
+## 五、Git Lfs
+
+### 背景
+
+git lfs 是git的一个插件工具，可以实现大文件的提交。例如在github仓库中，默认提交的文件大小不大于100M。大文件可以使用git lfs命令。
+
+> AI大模型的文件普遍都很大，所以都是采用git lfs方式提交仓库。
+
+### 使用方法
+
+#### 1. 下载git fls
+
+##### mac
+
+```cmd
+//mac
+brew install git-lfs
+
+```
+
+##### windows
+
+访问 [Git LFS 官方发布页面](https://github.com/git-lfs/git-lfs/releases)，下载适用于 Windows 的最新版本的安装程序（通常是 `.exe` 文件）。
+
+运行下载的安装程序，按照安装向导的提示完成安装。
+
+安装完成后，打开命令提示符或 PowerShell，输入 `git lfs install` 来初始化 Git LFS，该命令会在全局配置中启用 Git LFS。
+
+#### 2. 跟踪大文件
+
+在 Git 仓库中，你需要指定哪些类型的文件或具体哪些文件要使用 Git LFS 进行管理。
+
+- **跟踪特定类型的文件** 若要跟踪所有 `.psd`（Adobe Photoshop 文件）、`.mp4`（视频文件）等特定扩展名的文件，可使用 `git lfs track` 命令，示例如下：
+
+```bash
+git lfs track "*.psd"
+git lfs track "*.mp4"
+```
+
+此命令会在仓库根目录创建或更新一个名为 `.gitattributes` 的文件，其中会记录跟踪的文件类型，比如：
+
+```plaintext
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+```
+
+
+
+- **跟踪特定文件** 若只想跟踪某个具体的大文件，例如 `large_file.zip`，可使用以下命令：
+
+```bash
+git lfs track "large_file.zip"
+```
+
+
+
+#### 3. 添加和提交文件
+
+在跟踪文件之后，就可以像使用普通 Git 操作一样添加和提交文件。
+
+```bash
+git add .gitattributes  # 添加 .gitattributes 文件到暂存区
+git add large_file.zip  # 添加跟踪的大文件到暂存区
+git commit -m "Add large file using Git LFS"  # 提交更改
+```
+
+
+
+#### 4. 推送文件到远程仓库
+
+使用 `git push` 命令将本地仓库的更改推送到远程仓库。
+
+```bash
+git push origin main  # 假设推送到 main 分支
+```
+
+当执行 `git push` 时，Git LFS 会将大文件上传到其对应的存储服务（如 GitHub 提供的存储服务），而在 Git 仓库中仅存储文件的指针。
+
+#### 5. 克隆包含 Git LFS 文件的仓库
+
+当你克隆一个使用了 Git LFS 的仓库时，需要确保获取大文件的实际内容，而不仅仅是指针。
+
+
+
+- 使用 `git lfs clone` 命令直接克隆：
+
+```bash
+git lfs clone <repository_url>
+```
+
+
+
+- 若已经使用普通的 `git clone` 克隆了仓库，可以在仓库目录下运行以下命令来获取大文件的实际内容：
+
+```bash
+git lfs pull
+```
+
+
+
+#### 6. 查看跟踪的文件
+
+
+
+若想查看当前仓库中使用 Git LFS 跟踪的文件列表，可使用以下命令：
+
+```bash
+git lfs track
+```
+
+#### 7. 停止跟踪文件
+
+若不再需要使用 Git LFS 跟踪某个文件或某类文件，可按以下步骤操作：
+
+- 编辑 `.gitattributes` 文件，删除对应的跟踪规则。
+- 然后执行以下命令将文件从 Git LFS 管理中移除：
+
+```bash
+git lfs untrack "*.psd"  # 停止跟踪 .psd 文件
+git add .gitattributes
+git commit -m "Stop tracking .psd files with Git LFS"
+```
+
+不过要注意，已经使用 Git LFS 上传的文件记录仍然会保留在存储服务中。
