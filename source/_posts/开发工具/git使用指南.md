@@ -116,7 +116,7 @@ git lfs 是git的一个插件工具，可以实现大文件的提交。例如在
 ##### mac
 
 ```cmd
-//mac
+#mac
 brew install git-lfs
 
 ```
@@ -147,15 +147,11 @@ git lfs track "*.mp4"
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 ```
 
-
-
 - **跟踪特定文件** 若只想跟踪某个具体的大文件，例如 `large_file.zip`，可使用以下命令：
 
 ```bash
 git lfs track "large_file.zip"
 ```
-
-
 
 #### 3. 添加和提交文件
 
@@ -183,15 +179,11 @@ git push origin main  # 假设推送到 main 分支
 
 当你克隆一个使用了 Git LFS 的仓库时，需要确保获取大文件的实际内容，而不仅仅是指针。
 
-
-
 - 使用 `git lfs clone` 命令直接克隆：
 
 ```bash
 git lfs clone <repository_url>
 ```
-
-
 
 - 若已经使用普通的 `git clone` 克隆了仓库，可以在仓库目录下运行以下命令来获取大文件的实际内容：
 
@@ -199,11 +191,7 @@ git lfs clone <repository_url>
 git lfs pull
 ```
 
-
-
 #### 6. 查看跟踪的文件
-
-
 
 若想查看当前仓库中使用 Git LFS 跟踪的文件列表，可使用以下命令：
 
@@ -225,3 +213,83 @@ git commit -m "Stop tracking .psd files with Git LFS"
 ```
 
 不过要注意，已经使用 Git LFS 上传的文件记录仍然会保留在存储服务中。
+
+#### 8.取消自动下载大文件
+
+> 如果没有额外配置，git clone 大文件的仓库时，会自动下载大文件，并非下载大文件的指针文件。
+
+取消自动下载大文件方式
+
+1. **临时设置（仅当前命令生效）**
+
+如果你**只想在当前克隆时跳过 LFS 自动下载**，可以这样：
+
+```cmd
+# git clone 前加上 GIT_LFS_SKIP_SMUDGE=1
+GIT_LFS_SKIP_SMUDGE=1 git clone https://bitbucket.org/zhaodong-tech/gitsmallfiledemo17.git
+```
+
+2. **全局配置**
+
+如果你希望 **所有 Git 操作都默认跳过 LFS 自动下载**，可以修改 Git 配置：
+
+```
+git config --global lfs.fetchexclude "*"
+```
+
+然后进入仓库后，手动下载 LFS 文件：
+
+```
+cd gitsmallfiledemo17
+git lfs pull
+```
+
+这相当于**全局启用 GIT_LFS_SKIP_SMUDGE=1**，所有仓库默认不自动下载 LFS 文件，你需要手动执行：
+
+```cmd
+git lfs pull
+
+#也可以指定下载某个文件
+git lfs pull --include "*.psd"
+```
+
+如果以后想恢复默认行为（自动下载 LFS 文件），运行：
+
+```
+git config --global --unset lfs.fetchexclude
+```
+
+3. 总结
+
+| **方式**                 | **作用**                           | **命令**                                   |
+| ------------------------ | ---------------------------------- | ------------------------------------------ |
+| **临时设置**（单次克隆） | 只影响当前 `git clone`             | `GIT_LFS_SKIP_SMUDGE=1 git clone <repo>`   |
+| **当前终端会话内生效**   | 影响当前终端的所有 Git 操作        | `export GIT_LFS_SKIP_SMUDGE=1`             |
+| **全局永久生效**         | 所有 Git 仓库默认跳过 LFS 自动下载 | `git config --global lfs.fetchexclude "*"` |
+| **仅对某个仓库生效**     | 只影响当前仓库                     | `git config lfs.fetchexclude "*"`          |
+
+4. 常用命令
+
+   ```cmd
+   # 查看全局配置中 Git LFS 的相关设置,实际此配置设置也不会影响自动下载
+   
+   git config --global --get filter.lfs.smudge
+    #输出 git-lfs smudge -- %f
+   git config --global --get filter.lfs.clean
+   #输出 git-lfs clean -- %f
+   
+   #此命令也可能在~/.ssh/config文件中配置
+   [filter "lfs"]
+       clean = git-lfs clean -- %f
+       smudge = git-lfs smudge -- %f
+       process = git-lfs filter-process
+       required = true
+      
+   #查看lfs的环境变量
+   git lfs env
+   
+   ```
+
+   > **`filter.lfs.smudge`**：该配置项指定了一个脚本或命令，用于在从 Git 仓库检出文件时执行。当你从仓库中检出一个由 Git LFS 管理的文件时，Git 会执行 `git-lfs smudge -- %f` 命令，其中 `%f` 代表当前文件的路径。这个命令的作用是将文件的 LFS 指针替换为实际的大文件内容，从而将大文件从远程 LFS 存储中下载到本地。
+   >
+   > **`filter.lfs.clean`**：此配置项指定了在将文件添加到 Git 仓库时执行的脚本或命令。当你使用 `git add` 命令添加一个由 Git LFS 管理的文件时，Git 会执行 `git-lfs clean -- %f` 命令，它会将文件的实际内容替换为一个指向远程存储的 LFS 指针，然后将这个指针文件添加到 Git 仓库中，而实际的大文件内容则会被上传到远程的 LFS 存储。
